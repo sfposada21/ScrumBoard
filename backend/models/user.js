@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   dbStatus: Boolean,
 });
 
-userSchema.methods.generateWJT = function () {
+userSchema.methods.generateJWT = function () {
   return jwt.sign(
     {
       _id: this._id,
