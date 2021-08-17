@@ -4,7 +4,7 @@ const saveTask = async (req, res) => {
     if(!req.body.name || !req.body.description) return res.status(400).send("Incomplete data")
 
     const board = new Board({
-        userId : req.body.userId,
+        userId : req.user._id,
         name : req.body.name,
         description: req.body.description,
         taskStatus: "to-do",    
