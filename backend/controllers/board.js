@@ -1,5 +1,8 @@
 const Board = require("../models/board");
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require("path");
+const moment = require("moment");
 
 const saveTask = async (req, res) => {
   if (!req.body.name || !req.body.description)
@@ -23,6 +26,10 @@ const listTask = async (req, res) => {
     return res.status(400).send(" Process faildes: No task");
   return res.status(200).send({ board });
 };
+
+const saveTaskImg = async (req, res) => {
+
+}
 
 const updateTask = async (req, res) => {
   if (
@@ -52,4 +59,4 @@ const deleteTask = async (req, res) => {
   return res.status(200).send("task delete");
 };
 
-module.exports = { saveTask, listTask, updateTask, deleteTask };
+module.exports = { saveTask, listTask, updateTask, deleteTask, saveTaskImg};

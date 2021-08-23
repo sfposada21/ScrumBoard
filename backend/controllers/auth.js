@@ -5,6 +5,9 @@ const login = async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).send("Incorrect email or password");
 
+  if (user.dbStatus == false) return res.status(400).send("User does no exist");
+
+
   const hash = await bcrypt.compare(req.body.password, user.password);
   if (!hash) return res.status(400).send("Incorrect email or password");
 
